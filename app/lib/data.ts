@@ -5,11 +5,11 @@ import {
   InvoiceForm,
   InvoicesTable,
   LatestInvoiceRaw,
-  Revenue,
+  Phishing,
 } from './definitions';
 import { formatCurrency } from './utils';
 
-export async function fetchRevenue() {
+export async function fetchPhishing() {
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
@@ -17,7 +17,7 @@ export async function fetchRevenue() {
     // console.log('Fetching revenue data...');
     // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const data = await sql<Revenue>`SELECT * FROM revenue`;
+    const data = await sql<Phishing>`SELECT * FROM Organisational`;
 
     // console.log('Data fetch completed after 3 seconds.');
 

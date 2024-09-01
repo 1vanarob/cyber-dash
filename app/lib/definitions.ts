@@ -28,9 +28,9 @@ export type Invoice = {
   status: 'pending' | 'paid';
 };
 
-export type Revenue = {
-  month: string;
-  revenue: number;
+export type Phishing = {
+  dept: number;
+  phishing_fails: number;
 };
 
 export type LatestInvoice = {
