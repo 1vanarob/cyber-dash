@@ -1,5 +1,6 @@
 import Logo from '@/app/ui/logo';
 import LoginForm from '@/app/ui/login-form';
+import '@/global.css'
  
 export default function LoginPage() {
   return (
