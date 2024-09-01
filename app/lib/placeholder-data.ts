@@ -3,11 +3,27 @@
 const users = [
   {
     id: 4001,
-    name: 'User',
-    email: 'user@nextmail.com',
+    name: 'User4',
+    email: 'user4@nextmail.com',
     password: '123456',
     job_title: 'manager',
     dept: 309
+  },
+  {
+    id: 5001,
+    name: 'User5',
+    email: 'user5@nextmail.com',
+    password: '123456',
+    job_title: 'manager',
+    dept: 401
+  },
+  {
+    id: 1001,
+    name: 'User1',
+    email: 'user1@nextmail.com',
+    password: '123456',
+    job_title: 'manager',
+    dept: 521
   },
 ];
 
@@ -33,8 +49,6 @@ const organisational = [
   { dept: 521, sec_culture:6, phishing_fails: 7 },
   { dept: 401, sec_culture:6, phishing_fails: 1 },
   { dept: 309, sec_culture:4, phishing_fails: 4 },
-  { dept: 511, sec_culture:2, phishing_fails: 7 },
-  { dept: 706, sec_culture:9, phishing_fails: 3 },
 ];
 
 const individual = [
@@ -44,9 +58,9 @@ const individual = [
 ];
 
 const technical = [
-  {incident_id:1100987, type:'Phishing', severity:2, response_time:2, dept:521},
-  {incident_id:2100154, type:'Data Breach', severity:9, response_time:17, dept:511},
-  {incident_id:3400765, type:'Phishing', severity:2, response_time:6, dept:309},
+  {incident_id:1100, type:'Phishing', severity:2, response_time:2, dept:521},
+  {incident_id:2100, type:'Data Breach', severity:9, response_time:17, dept:401},
+  {incident_id:3400, type:'Phishing', severity:2, response_time:6, dept:309},
 ];
 
 export { users, department, organisational, individual, technical};

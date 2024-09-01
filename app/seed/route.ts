@@ -26,7 +26,7 @@ async function seedUsers() {
       `;
     }),
   );
-
+  console.log("Users");
   return insertedUsers;
 }
 
@@ -51,7 +51,7 @@ async function seedOrganisational() {
       `;
     }),
   );
-
+  console.log("org");
   return insertedOrganisational;
 }
 
@@ -76,7 +76,7 @@ async function seedDepartment() {
       `;
     }),
   );
-
+  console.log('dept');
   return insertedDepartment;
 }
 
@@ -103,7 +103,7 @@ async function seedIndividual() {
       `;
     }),
   );
-
+  console.log('indiv');
   return insertedIndividual;
 }
 
@@ -117,9 +117,10 @@ async function seedTechnical() {
       dept int,
       CONSTRAINT fk_technical
       FOREIGN KEY(dept) 
-      REFERENCES dept(dept)
+      REFERENCES department(dept)
     );
   `;
+  console.log('created tech');
 
   const insertedTechnical = await Promise.all(
     technical.map(async (tech) => {
@@ -130,7 +131,7 @@ async function seedTechnical() {
       `;
     }),
   );
-
+  console.log("tech");
   return insertedTechnical;
 }
 
@@ -139,8 +140,8 @@ export async function GET() {
   try {
     await client.sql`BEGIN`;
     await seedUsers();
-    await seedOrganisational();
     await seedDepartment();
+    await seedOrganisational();
     await seedIndividual();
     await seedTechnical();
     await client.sql`COMMIT`;
