@@ -29,17 +29,10 @@ async function getUser(email: string): Promise<User | undefined> {
             const { email, password } = parsedCredentials.data;
             const user = await getUser(email);
             if (!user) return null;
-            console.log(password);
-            console.log(user.password);
             const passwordsMatch = await bcrypt.compare(password, user.password);
-            console.log(passwordsMatch);
 
             if (passwordsMatch) return user as any;
           }
-
-          console.log('Invalid credentials');
-          return null;
-   
           return null;
         },
       }),

@@ -17,7 +17,7 @@ export async function authenticate(
         case 'CredentialsSignin':
           return 'Invalid credentials.';
         default:
-          return 'Something went wrong.';
+          return 'Please try again.';
       }
     }
     throw error;

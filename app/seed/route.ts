@@ -12,7 +12,7 @@ async function seedUsers() {
       email TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL,
       job_title TEXT,
-      dept int ON DELETE CASCADE
+      dept int
     );
   `;
 
@@ -26,7 +26,6 @@ async function seedUsers() {
       `;
     }),
   );
-  console.log("Users");
   return insertedUsers;
 }
 
@@ -51,7 +50,6 @@ async function seedOrganisational() {
       `;
     }),
   );
-  console.log("org");
   return insertedOrganisational;
 }
 
@@ -76,7 +74,6 @@ async function seedDepartment() {
       `;
     }),
   );
-  console.log('dept');
   return insertedDepartment;
 }
 
@@ -103,7 +100,6 @@ async function seedIndividual() {
       `;
     }),
   );
-  console.log('indiv');
   return insertedIndividual;
 }
 
@@ -120,7 +116,6 @@ async function seedTechnical() {
       REFERENCES department(dept)
     );
   `;
-  console.log('created tech');
 
   const insertedTechnical = await Promise.all(
     technical.map(async (tech) => {
@@ -131,7 +126,6 @@ async function seedTechnical() {
       `;
     }),
   );
-  console.log("tech");
   return insertedTechnical;
 }
 
