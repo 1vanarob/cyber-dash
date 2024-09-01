@@ -12,7 +12,7 @@ async function seedUsers() {
       email TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL,
       job_title TEXT,
-      dept int
+      dept int ON DELETE CASCADE
     );
   `;
 
