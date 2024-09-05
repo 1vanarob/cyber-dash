@@ -82,7 +82,6 @@ export async function fetchCardData() {
 
 const ITEMS_PER_PAGE = 6;
 
-
 export async function fetchInvoicesPages(query: string) {
   try {
     const count = await sql`SELECT COUNT(*)
