@@ -1,9 +1,9 @@
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
-import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import LatestIncidents from '@/app/ui/dashboard/latest-incidents';
 import { fetchPhishing, fetchLatestIncidents } from '@/app/lib/data';
 export default async function Page() {
     const phishing = await fetchPhishing();
-    const latestInvoices = await fetchLatestIncidents();
+    const latestIncidents = await fetchLatestIncidents();
     return (
     <main>
       <h1 className={` mb-4 text-xl md:text-2xl`}>
@@ -14,7 +14,7 @@ export default async function Page() {
       </div>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
         {<RevenueChart revenue={phishing}  />}
-        {<LatestInvoices latestInvoices={latestInvoices} /> }
+        {<LatestIncidents latestIncidents={latestIncidents} /> }
       </div>
     </main>
   );

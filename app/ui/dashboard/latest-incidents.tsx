@@ -1,11 +1,10 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import Image from 'next/image';
-import { LatestInvoice } from '@/app/lib/definitions';
-export default async function LatestInvoices({
-  latestInvoices,
+import { LatestIncident } from '@/app/lib/definitions';
+export default async function LatestIncidents({
+  latestIncidents,
 }: {
-  latestInvoices: LatestInvoice[];
+  latestIncidents: LatestIncident[];
 }) {
   return (
     <div className="flex w-full flex-col md:col-span-4">
@@ -16,10 +15,10 @@ export default async function LatestInvoices({
         {/* NOTE: Uncomment this code in Chapter 7 */}
 
         {<div className="bg-white px-6">
-          {latestInvoices.map((invoice, i) => {
+          {latestIncidents.map((incident, i) => {
             return (
               <div
-                key={invoice.dept}
+                key={incident.dept}
                 className={clsx(
                   'flex flex-row items-center justify-between py-4',
                   {
@@ -30,17 +29,17 @@ export default async function LatestInvoices({
                 <div className="flex items-center">
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">
-                      {invoice.dept_name}
+                      {incident.dept_name}
                     </p>
                     <p className="hidden text-sm text-gray-500 sm:block">
-                      {invoice.type}
+                      {incident.type}
                     </p>
                   </div>
                 </div>
                 <p
                   className={` truncate text-sm font-medium md:text-base`}
                 >
-                  {invoice.severity}
+                  {incident.severity}
                 </p>
               </div>
             );
