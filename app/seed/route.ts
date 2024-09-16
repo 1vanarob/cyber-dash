@@ -5,6 +5,7 @@ import { department, organisational, users, individual, technical} from '../lib/
 const client = await db.connect();
 
 async function seedUsers() {
+  await client.sql`DROP TABLE IF EXISTS users;`
   await client.sql`
     CREATE TABLE IF NOT EXISTS users (
       id int PRIMARY KEY,

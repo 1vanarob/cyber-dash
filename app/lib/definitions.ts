@@ -7,7 +7,7 @@ export type User = {
   name: string;
   email: string;
   password: string;
-  job_type: string;
+  job_title: string;
   dept: number;
 };
 

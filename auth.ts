@@ -30,12 +30,11 @@ async function getUser(email: string): Promise<User | undefined> {
           if (parsedCredentials.success) {
             const { email, password } = parsedCredentials.data;
             const user = await getUser(email);
-            console.log(user);
             if (!user) return null;
             const passwordsMatch = await bcrypt.compare(password, user.password);
 
             if (passwordsMatch){
-              await createSession(user.name);
+              await createSession(user.name,user.job_title);
               return user as any;
             } 
           }

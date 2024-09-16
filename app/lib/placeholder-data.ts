@@ -3,7 +3,7 @@
 const users = [
   {
     id: 4001,
-    name: 'User4',
+    name: 'Mary Jane',
     email: 'user4@nextmail.com',
     password: '123456',
     job_title: 'manager',
@@ -11,15 +11,15 @@ const users = [
   },
   {
     id: 5001,
-    name: 'User5',
+    name: 'John Doe',
     email: 'user5@nextmail.com',
     password: '123456',
-    job_title: 'manager',
+    job_title: 'employee',
     dept: 401
   },
   {
     id: 1001,
-    name: 'User1',
+    name: 'Jane Doe',
     email: 'user1@nextmail.com',
     password: '123456',
     job_title: 'manager',
