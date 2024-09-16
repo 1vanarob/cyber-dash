@@ -4,8 +4,7 @@ import Logo from '@/app/ui/logo';
 import { PowerIcon,UserIcon } from '@heroicons/react/24/outline';
 import '@/global.css'
 import { signOut } from '@/auth';
-import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
+import { deleteSession } from '@/app/lib/session';
 
 export default function SideNav() {
   return (
@@ -25,6 +24,7 @@ export default function SideNav() {
         <form
           action={async () => {
             'use server';
+            deleteSession();
             await signOut();
           }}
         >

@@ -84,3 +84,9 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export type SessionPayload = {
+  id: string;
+  job_type: string;
+  dept: number;
+}

@@ -2,10 +2,13 @@ import { Card } from '@/app/ui/dashboard/cards';
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
 import { fetchPhishing, fetchLatestInvoices, fetchCardData } from '@/app/lib/data';
+import { cookies } from 'next/headers';
 
- 
+
+
 export default async function Page() {
   const phishing = await fetchPhishing();
+  const cookie = cookies().get('session')?.value
   const latestInvoices = await fetchLatestInvoices();
   const {
     numberOfIncidents,
@@ -15,7 +18,7 @@ export default async function Page() {
   return (
     <main>
       <h1 className={` mb-4 text-xl md:text-2xl`}>
-        Dashboard
+        Welcome {cookie}
       </h1>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {<Card title="Total Incidents" value={numberOfIncidents} type="collected" /> }

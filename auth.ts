@@ -5,11 +5,13 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import type { User } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
+import { createSession } from '@/app/lib/session';
+
+
 
 async function getUser(email: string): Promise<User | undefined> {
     try {
       const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;
-      console.log(user.rows[0]);
       return user.rows[0];
     } catch (error) {
       console.error('Failed to fetch user:', error);
@@ -28,10 +30,14 @@ async function getUser(email: string): Promise<User | undefined> {
           if (parsedCredentials.success) {
             const { email, password } = parsedCredentials.data;
             const user = await getUser(email);
+            console.log(user);
             if (!user) return null;
             const passwordsMatch = await bcrypt.compare(password, user.password);
 
-            if (passwordsMatch) return user as any;
+            if (passwordsMatch){
+              await createSession(user.name);
+              return user as any;
+            } 
           }
           return null;
         },
