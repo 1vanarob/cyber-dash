@@ -1,12 +1,12 @@
 import { Card } from '@/app/ui/dashboard/cards';
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
-import { fetchPhishing, fetchLatestInvoices, fetchCardData } from '@/app/lib/data';
+import { fetchPhishing, fetchLatestIncidents, fetchCardData } from '@/app/lib/data';
 import { cookies } from 'next/headers';
 
 export default async function adminDashboard(){
     const name = cookies().get('name')?.value
-    const latestInvoices = await fetchLatestInvoices();
+    const latestInvoices = await fetchLatestIncidents();
     const {
     numberOfIncidents,
       avgSecurity,

@@ -3,23 +3,14 @@ import {
   CustomerField,
   CustomersTableType,
   InvoiceForm,
-  LatestInvoice,
+  LatestIncident,
   Phishing,
 } from './definitions';
 import { formatCurrency } from './utils';
 
 export async function fetchPhishing() {
   try {
-    // Artificially delay a response for demo purposes.
-    // Don't do this in production :)
-
-    // console.log('Fetching revenue data...');
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
-
     const data = await sql<Phishing>`SELECT * FROM Organisational`;
-
-    // console.log('Data fetch completed after 3 seconds.');
-
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -27,38 +18,35 @@ export async function fetchPhishing() {
   }
 }
 
-export async function fetchLatestInvoices() {
+export async function fetchLatestIncidents() {
   try {
-    const data = await sql<LatestInvoice>`
+    const data = await sql<LatestIncident>`
       SELECT department.dept, department.dept_name, technical.type, technical.severity
       FROM technical
       JOIN department ON department.dept = technical.dept
       ORDER BY technical.severity DESC`;
 
-    const latestInvoices = data.rows.map((invoice) => ({
+    const latestIncidents = data.rows.map((invoice) => ({
       ...invoice,
     }));
-    return latestInvoices;
+    return latestIncidents;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch the latest invoices.');
+    throw new Error('Failed to fetch the latest invcidents.');
   }
 }
 
 export async function fetchCardData() {
   try {
-    // You can probably combine these into a single SQL query
-    // However, we are intentionally splitting them to demonstrate
-    // how to initialize multiple queries in parallel with JS.
-    const invoiceCountPromise = sql`SELECT COUNT(*) FROM technical`;
-    const customerCountPromise = sql`SELECT AVG(sec_culture) FROM organisational`;
-    const invoiceStatusPromise = sql`SELECT
+    const incidentCountPromise = sql`SELECT COUNT(*) FROM technical`;
+    const secCulturePromise = sql`SELECT AVG(sec_culture) FROM organisational`;
+    const severityPromise = sql`SELECT
          AVG(severity) FROM technical`;
 
     const data = await Promise.all([
-      invoiceCountPromise,
-      customerCountPromise,
-      invoiceStatusPromise,
+      incidentCountPromise,
+      secCulturePromise,
+      severityPromise,
     ]);
 
     const numberOfIncidents = Number(data[0].rows[0].count ?? '0');
