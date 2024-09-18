@@ -24,7 +24,7 @@ const links = [
   
 ];
 
-export default function NavLinks() {
+export function NavLinks() {
   const pathname = usePathname();
   return (
     <main className='flex-col justify-items-between'>
@@ -47,7 +47,15 @@ export default function NavLinks() {
           </Link>
         );
       })}
-      <div>
+     
+    </main>
+  );
+}
+
+export function ProfileLink() {
+  const pathname = usePathname();
+  return (
+    <div>
       <Link 
       key={"Profile"} 
       href={"/dashboard/profile"}
@@ -62,7 +70,5 @@ export default function NavLinks() {
         <p className="hidden md:block">Profile</p>
       </Link>
       </div>
-     
-    </main>
   );
 }
