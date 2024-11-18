@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import {NavLinks,ProfileLink} from '@/app/ui/dashboard/nav-links';
-import Logo from '@/app/ui/logo';
 import { PowerIcon,UserIcon } from '@heroicons/react/24/outline';
 import '@/global.css'
 import { signOut } from '@/auth';
@@ -14,7 +13,6 @@ export default function SideNav() {
         href="/"
       >
       <div className="w-32 text-white md:w-40">
-        <Logo />
       </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
